@@ -6,16 +6,17 @@
 /*   By: gosahin <gosahin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:18:41 by gosahin           #+#    #+#             */
-/*   Updated: 2025/03/04 15:00:14 by gosahin          ###   ########.fr       */
+/*   Updated: 2025/03/04 16:45:59 by gosahin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(t_stack **node)
+static void	ft_swap(t_stack **node)
 {
 	int	temp;
-	if (node != '\0' || *node != '\0' || (*node)->next != '\0')
+
+	if (node != NULL || *node != NULL || (*node)->next != NULL)
 		return ;
 	if (ft_lstsize(*node) > 1)
 	{
@@ -40,10 +41,28 @@ void	ft_sb(t_stack **stack_b)
 
 void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
-	if (*stack_b != '\0')
+	if (*stack_b != NULL)
 	{
-		
+		temp = *stack_b;
+		*stack_b = (*stack_b)->next;
+		temp->next = *stack_a;
+		*stack_a = temp;
+		ft_printf("pa\n");
+	}
+}
+
+void	ft_pb(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*temp;
+
+	if (*stack_a != NULL)
+	{
+		temp = *stack_a;
+		*stack_a = (*stack_a)->next;
+		temp->content = *stack_b;
+		*stack_b = temp;
+		ft_printf("pb\n");
 	}
 }

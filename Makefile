@@ -6,7 +6,7 @@
 #    By: gosahin <gosahin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 11:02:02 by gosahin           #+#    #+#              #
-#    Updated: 2025/03/04 11:13:06 by gosahin          ###   ########.fr        #
+#    Updated: 2025/03/04 17:12:03 by gosahin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,15 @@ RM			=	rm -f
 LIBFT		=	Libft
 PRINTF		=	ft_printf
 
-SRCS		=	push_swap.c
+SRCS		=	ft_move.c \
+				ft_move1.c
+				
 OBJS		=	$(SRCS:.c=.o)
 
 all: $(LIBFT) $(PRINTF) $(NAME)
 
 $(NAME):	$(OBJS)
-		$(NAME) $(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT)
